@@ -1,3 +1,17 @@
 @mixin gfont($font-name, $font-weights: null, $languages: null, $swap: true) {
+  $url: "https://fonts.googleapis.com/css2?family=#{str-replace($font-name, " ", "+")}";
   
+  @if $font-weights {
+    $url: $url + ':wght@' + $font-weights; 
+  }
+  
+  @if $languages {
+    $url: $url + '&subset=' + $languages; 
+  }
+  
+  @if $swap {
+    $url: $url + '&display=swap'; 
+  }
+  
+  @import url($url);
 }
